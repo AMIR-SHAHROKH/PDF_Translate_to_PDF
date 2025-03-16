@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  farsi_translator:
+    container_name: farsi_translator_app
+    build: 
+      context: .
+      args:
+        - PIP_DEFAULT_TIMEOUT=100
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PIP_INDEX_URL=https://pypi.org/simple  # Use faster mirror
+    restart: always
